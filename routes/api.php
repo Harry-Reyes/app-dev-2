@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/getEmail', function (Request $request) {
+Route::get('/getRequest', function (Request $request) {
     return $request->name . '-' . $request->email;
 });
