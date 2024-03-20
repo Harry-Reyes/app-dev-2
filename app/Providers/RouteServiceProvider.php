@@ -39,6 +39,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('api')
                 ->prefix('inaapi')
                 ->group(base_path('routes/inaapi.php'));
+
+            Route::middleware('api')
+            ->prefix('methods')
+            ->group(base_path('routes/methods.php'));
         });
     }
 }
