@@ -5,10 +5,12 @@ use App\Http\Controllers\MethodController;
 
 Route::get('/', [MethodController::class, 'index']);
 
-Route::post('/', [MethodController::class, 'store']);
-
 Route::get('/{method}', [MethodController::class, 'show']);
 
-Route::match(['put', 'patch'], '/{method}', [MethodController::class, 'update']);
+Route::middleware('check_token')->group(function () {
+    Route::post('/', [MethodController::class, 'store']);
 
-Route::delete('/{method}', [MethodController::class, 'destroy']);
+    Route::match(['put', 'patch'], '/{method}', [MethodController::class, 'update']);
+
+    Route::delete('/{method}', [MethodController::class, 'destroy']);
+});
